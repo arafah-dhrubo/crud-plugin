@@ -56,13 +56,9 @@ final class Crud_Plugin{
     }
 
     public function activate(){
-        $installed = get_option('cp_installed');
-
-        if(!$installed){
-            update_option('cp_installed', time());
-        }
-
-        update_option('cp_version', CP_VERSION);
+        include_once CP_PATH.'/includes/Installer.php';
+        $installer = new Installer();
+        $installer->run();
     }
 
     /**
